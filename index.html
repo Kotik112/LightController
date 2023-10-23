@@ -5,9 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Light Controller</title>
-    <link rel="stylesheet" href="style.css">
-    </link>
-    <script src="./script.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -22,20 +20,25 @@
         <label for="colorPicker">Choose a color:</label>
         <input type="color" id="colorPicker" value="#ff0000" />
     </div>
+
     <!-- Modes -->
     <div class="modes-container">
         <button>Choose Modes</button>
         <div class="dropdown-content">
-            <button class="multi-color-btn halloween-btn">Halloween Mode</button>
-            <button class="multi-color-btn st-patricks-btn">
+            <!-- Haloween Mode -->
+            <button class="multi-color-btn halloween-btn" id="halloween-btn">Halloween Mode</button>
+            <!-- St. Patrick's Day Mode -->
+            <button class="multi-color-btn st-patricks-btn" id="st-patricks-btn">
                 St. Patrick's Day Mode
             </button>
-            <button class="multi-color-btn christmas-btn">Christmas Mode</button>
+            <!-- Christmas Mode -->
+            <button class="multi-color-btn christmas-btn" id="christmas-btn">Christmas Mode</button>
         </div>
     </div>
     <div class="logo-container">
         <img src="https://www.smileincubator.life/wp-content/uploads/2020/04/prevas_logo.png" alt="Prevas Logo" />
     </div>
+    <script src="./script.js"></script>
 </body>
 
 </html>

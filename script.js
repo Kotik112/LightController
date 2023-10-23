@@ -1,27 +1,27 @@
-'use strict';
 
 // Toggle power button
 const powerOnButton = document.getElementById("powerOn");
 const powerOffButton = document.getElementById("powerOff");
 const colorPicker = document.getElementById("colorPicker");
+const stPatriksDayButton = document.getElementById("stPatriksDay");
 
-colorPicker.addEventListener("change", () => {
-    connect();
-    const color = colorPicker.value;
-    let result = hexToRgb(color);
-    console.log(result);
-    setRed(result.r);
-    setGreen(result.g);
-    setBlue(result.b);
-    console.log("Color changed");
-});
+console.log(powerOnButton);
 
-powerOnButton.addEventListener("click", () => {
-    powerOnButton.style.backgroundColor = "#4CAF50";
+/* colorPicker.addEventListener("change", () => {
+    // TODO: Change color of the light bulb
+}); */
+
+powerOnButton.addEventListener("click", (event) => {
+    // Swap background colors
+    powerOnButton.style.backgroundColor = "#f44336";
     powerOffButton.style.backgroundColor = "#d4d4d4";
+    console.log("Power on");
+    console.log(event);
 });
 
 powerOffButton.addEventListener("click", () => {
+    // Swap background colors
     powerOffButton.style.backgroundColor = "#f44336";
     powerOnButton.style.backgroundColor = "#d4d4d4";
+    console.log("Power off");
 });
