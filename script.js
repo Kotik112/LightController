@@ -6,6 +6,49 @@ const colorPicker = document.getElementById("colorPicker");
 const stPatriksDayButton = document.getElementById("st-patricks-btn");
 
 const christmasButton = document.getElementById("christmas-btn");
+const pageBody = document.getElementById("page-body");
+
+      
+const Checkbox1 = document.getElementById("Checkbox1");
+const colorPicker1 = document.getElementById("colorPicker1");
+const Checkbox2 = document.getElementById("Checkbox2");
+const colorPicker2 = document.getElementById("colorPicker2");
+const Checkbox3 = document.getElementById("Checkbox3");
+const colorPicker3 = document.getElementById("colorPicker3");
+const Checkbox4 = document.getElementById("Checkbox4");
+const colorPicker4 = document.getElementById("colorPicker4");
+const Checkbox5 = document.getElementById("Checkbox5");
+const colorPicker5 = document.getElementById("colorPicker5");
+const Checkbox6 = document.getElementById("Checkbox6");
+const colorPicker6 = document.getElementById("colorPicker6");
+
+
+
+colorPicker.addEventListener("change", () => {
+    const color = colorPicker.value;
+  console.log("Color changed");
+
+  // Update Color Picker 1 if its checkbox is checked
+  if (Checkbox1.checked) {
+    colorPicker1.value = color;
+  }
+  if (Checkbox2.checked) {
+    colorPicker2.value = color;
+  }
+  if (Checkbox3.checked) {
+    colorPicker3.value = color;
+  }
+  if (Checkbox4.checked) {
+    colorPicker4.value = color;
+  }
+  if (Checkbox5.checked) {
+    colorPicker5.value = color;
+  }
+  if (Checkbox6.checked) {
+    colorPicker6.value = color;
+  }
+});
+
 
 const wsUrl = `ws://172.16.17.14:9999/qlcplusWS`;
 let ws;
@@ -20,6 +63,11 @@ powerOnButton.addEventListener("click", (event) => {
         // Swap background colors
         powerOnButton.style.backgroundColor = "#f44336";
         powerOffButton.style.backgroundColor = "#d4d4d4";
+        pageBody.style.backgroundColor = "black";
+        
+    document.querySelectorAll(".color-picker-container label").forEach((label) => {
+      label.style.color = "white";
+    });
         turnOn(1, 7);
     }
     else {
@@ -33,6 +81,11 @@ powerOffButton.addEventListener("click", () => {
         // Swap background colors
         powerOffButton.style.backgroundColor = "#f44336";
         powerOnButton.style.backgroundColor = "#d4d4d4";
+        pageBody.style.backgroundColor = "white";
+       
+    document.querySelectorAll(".color-picker-container label").forEach((label) => {
+      label.style.color = "black";
+    });
         turnOff(1, 7);
     }
     else {
@@ -40,6 +93,67 @@ powerOffButton.addEventListener("click", () => {
         connectToWebsocket();
     }
 });
+Checkbox1.addEventListener("change", () => {
+    // Enable/disable Color Picker 1 based on the checkbox state
+    colorPicker1.disabled = !Checkbox1.checked;
+  
+    // Update Color Picker 1 if it's being enabled
+    if (Checkbox1.checked) {
+      colorPicker1.value = colorPicker.value;
+      const color = colorPicker1.value;
+    }
+  });
+  
+  Checkbox2.addEventListener("change", () => {
+    // Enable/disable Color Picker 2 based on the checkbox state
+    colorPicker2.disabled = !Checkbox2.checked;
+  
+    // Update Color Picker 2 if it's being enabled
+    if (Checkbox2.checked) {
+      colorPicker2.value = colorPicker.value;
+    }
+  });
+  
+  Checkbox3.addEventListener("change", () => {
+    // Enable/disable Color Picker 2 based on the checkbox state
+    colorPicker3.disabled = !Checkbox3.checked;
+  
+    // Update Color Picker 2 if it's being enabled
+    if (Checkbox3.checked) {
+      colorPicker3.value = colorPicker.value;
+    }
+  });
+  
+  Checkbox4.addEventListener("change", () => {
+    // Enable/disable Color Picker 2 based on the checkbox state
+    colorPicker4.disabled = !Checkbox4.checked;
+  
+    // Update Color Picker 2 if it's being enabled
+    if (Checkbox4.checked) {
+      colorPicker4.value = colorPicker.value;
+    }
+  });
+  
+  Checkbox5.addEventListener("change", () => {
+    // Enable/disable Color Picker 2 based on the checkbox state
+    colorPicker5.disabled = !Checkbox5.checked;
+  
+    // Update Color Picker 2 if it's being enabled
+    if (Checkbox5.checked) {
+      colorPicker5.value = colorPicker.value;
+    }
+  });
+  
+  Checkbox6.addEventListener("change", () => {
+    // Enable/disable Color Picker 2 based on the checkbox state
+    colorPicker6.disabled = !Checkbox6.checked;
+  
+    // Update Color Picker 2 if it's being enabled
+    if (Checkbox6.checked) {
+      colorPicker6.value = colorPicker.value;
+    }
+  });
+
 stPatriksDayButton.addEventListener("click", () => {
     if (isConnected) {
         stPatricksDay();
