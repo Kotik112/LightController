@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Light Controller</title>
+    <link rel="stylesheet" href="style.css">
+    </link>
+    <script src="./script.js"></script>
+</head>
+
+<body>
+    <!-- Power buttons -->
+    <div class="controls power-container">
+        <button class="power-button power-on" id="powerOn">On</button>
+        <button class="power-button power-off" id="powerOff">Off</button>
+    </div>
+
+    <!-- Color picker -->
+    <div class="color-picker-container">
+        <label for="colorPicker">Choose a color:</label>
+        <input type="color" id="colorPicker" value="#ff0000" />
+    </div>
+    <!-- Modes -->
+    <div class="modes-container">
+        <button>Choose Modes</button>
+        <div class="dropdown-content">
+            <button class="multi-color-btn halloween-btn">Halloween Mode</button>
+            <button class="multi-color-btn st-patricks-btn">
+                St. Patrick's Day Mode
+            </button>
+            <button class="multi-color-btn christmas-btn">Christmas Mode</button>
+        </div>
+    </div>
+    <div class="logo-container">
+        <img src="https://www.smileincubator.life/wp-content/uploads/2020/04/prevas_logo.png" alt="Prevas Logo" />
+    </div>
+</body>
+
+</html>
