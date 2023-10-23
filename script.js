@@ -36,6 +36,15 @@ powerOffButton.addEventListener("click", () => {
         connectToWebsocket();
     }
 });
+stPatriksDayButton.addEventListener("click",()=>{
+    if(isConnected) {
+        stPatricksDay();
+    }
+    else {
+        console.log("not connected");
+        connectToWebsocket();
+    }
+})
 
 colorPicker.addEventListener("change", () => {
     // TODO: Change color of the light bulb
@@ -108,3 +117,34 @@ function turnOff(start, end) {
         sendMessage(`CH|${start}|0`);
     }
 }
+function stPatricksDay(){
+    let index = 0
+    setInterval(() => {
+        
+    const colors = [
+        [255, 95, 0], // Orange
+        [0, 255, 0], // Green
+    ]
+
+    let r, g, b;
+    // Lampa 1
+    [r, g, b] = colors[index];
+    ws.send(`CH|1|${r}`)
+    ws.send(`CH|2|${g}`)
+    ws.send(`CH|3|${b}`)
+
+    let secondIndex = index === 1 ? 0 : 1;
+
+    // Lampa 2 
+    [r, g, b] = colors[secondIndex];
+    ws.send(`CH|4|${r}`); 
+    ws.send(`CH|5|${g}`);
+    ws.send(`CH|6|${b}`);
+    
+    index++;
+    if(index >= 2) {
+        index = 0;
+    }
+    }, 1000);
+
+ }
