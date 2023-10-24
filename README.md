@@ -15,7 +15,8 @@ This project provides a web interface for controlling DMX lights. It uses JavaSc
 ### 2. Prerequisites<a name="prerequisites"></a>
 Before using this project, you should have the following prerequisites in place:
 
-A working WebSocket server that listens for DMX control commands.
+A working WebSocket server from QLC+. We used a Raspberry Pi 3 b+ QLC+ (which costs 15$) for this project but a QLC+ on your personal PC will work.
+Make sure you connect to ```ws://localhost:9999/qlcplusWS```
 DMX fixtures configured to receive control commands on specific channels (sequenced channels).
 
 ### 3. Usage<a name="usage"></a>
