@@ -3,22 +3,26 @@
 This documentation provides information on how to use and understand the JavaScript code for controlling DMX lights using a web interface. The program assumes that the DMX fixtures are set to sequenced channels, meaning each fixture occupies a series of consecutive DMX channels. The JavaScript code interacts with a WebSocket server to control DMX lights.
 
 ## Table of Contents
-[Introduction](#introduction)<br>
-[Prerequisites](#prerequisites)<br>
-[Usage](#usage)<br>
-[Functionality](#functionality)<br>
-[HTML Structure](#html-structure)<br>
+
+[1. Introduction](#introduction)<br>
+[2. Prerequisites](#prerequisites)<br>
+[3. Usage](#usage)<br>
+[4. Functionality](#functionality)<br>
+[5. HTML Structure](#html-structure)<br>
 
 ### 1. Introduction<a name="introduction"></a>
+
 This project provides a web interface for controlling DMX lights. It uses JavaScript and WebSocket communication to send DMX control commands to compatible fixtures. The code allows you to turn the lights on or off, change their colors, and activate various lighting modes.
 
 ### 2. Prerequisites<a name="prerequisites"></a>
+
 Before using this project, you should have the following prerequisites in place:
 
 A working WebSocket server that listens for DMX control commands.
 DMX fixtures configured to receive control commands on specific channels (sequenced channels).
 
 ### 3. Usage<a name="usage"></a>
+
 To use this project, follow these steps:
 
 Clone the repository or download the HTML and JavaScript files.
@@ -27,6 +31,7 @@ Ensure your WebSocket server's URL is correctly set in the JavaScript code (vari
 Once you've completed the above steps, you can use the web interface to control your DMX lights.
 
 ### 4. Functionality<a name="functionality"></a>
+
 Power Control
 Clicking the "On" button (powerOnButton) turns on the lights.
 Clicking the "Off" button (powerOffButton) turns off the lights.
@@ -49,6 +54,7 @@ Helper Functions
 Various helper functions are provided for interacting with DMX lights, such as sendMessage, turnOn, turnOff, and others.
 
 ### 5. HTML Structure<a name="html-structure"></a>
+
 The HTML structure consists of various elements that form the user interface for controlling DMX lights. The key elements include:
 
 Power buttons for turning the lights on and off.
