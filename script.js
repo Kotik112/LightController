@@ -164,27 +164,35 @@ const merryGoRound = () => {
     [25, 26, 27],
     [28, 29, 30],
   ];
-  let dimmerDown, dimmerUp;
   const step = 5;
-
-  // (10 lampor * 3 kanaler) + 1 då kanalerna börjar från 1 och inte 0
   const MAX_CHANNELS = 10 * 3 + 1;
-  setInterval(() => {
+
+  const dim = (channel, value) => {
+    return new Promise((resolve) => {
+      sendMessage(`CH|${channel}|${value}`);
+      setTimeout(resolve, 1000);
+    });
+  };
+
+  const dimFixtures = async () => {
     let counter = 0;
     let max = 255;
     let min = 0;
 
     for (let i = BLUE; i < MAX_CHANNELS; i += 3) {
       dimmerDown = fixtures[counter];
-      dimmerUp = fixtures[counter + 1];
+      dimmerUp = fixtures[(counter + 1) % fixtures.length];
       max -= step;
       min += step;
-      setTimeout(() => {
-        sendMessage(`CH|${dimmerDown[BLUE]}|${max}`);
-        sendMessage(`CH|${dimmerUp[BLUE]}|${min}`);
-      }, 1000);
+      await dim(dimmerDown[BLUE], max);
+      await dim(dimmerUp[BLUE], min);
+      counter = (counter + 1) % fixtures.length;
     }
-  }, 10_000);
-};
+  };
 
-const switchLight = () => {};
+  // Call dimFixtures initially
+  dimFixtures();
+
+  // Set up a repeating interval
+  setInterval(dimFixtures, 10_000);
+};
