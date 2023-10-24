@@ -175,7 +175,13 @@ stPatriksDayButton.addEventListener("click", () => {
 });
 
 colorPicker.addEventListener("change", () => {
-  // TODO: Change color of the light bulb
+  const selectedColor = colorPicker.value;
+  const colors = hex2rgb(selectedColor);
+  // Change default channel if needed by calling:
+  // setRed(startChannel = N, colors.r);
+  setRed(colors.r);
+  setGreen(colors.g);
+  setBlue(colors.b);
 });
 
 christmasButton.addEventListener("click", () => {
@@ -278,4 +284,40 @@ function sendColorAlternation(color1, color2) {
   if (index >= 2) {
     index = 0;
   }
+}
+
+function hex2rgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+
+  // return {r, g, b}
+  return { r, g, b };
+}
+
+function setRed(startChannel = 1, value) {
+  if (value < 0 || value > 255) {
+    log.error("Invalid value!");
+    return;
+  }
+  if (startChannel % 3 === 1) {
+    log.error("Invalid startChannel.");
+  }
+  sendMessage(`CH|${startChannel}|${value}`);
+}
+
+function setGreen(startChannel = 2, value) {
+  if (value < 0 || value > 255) {
+    alert("Invalid value!");
+    return;
+  }
+  sendMessage(`CH|${startChannel + 1}|${value}`);
+}
+
+function setBlue(startChannel = 3, value) {
+  if (value < 0 || value > 255) {
+    alert("Invalid value!");
+    return;
+  }
+  sendMessage(`CH|${startChannel + 2}|${value}`);
 }
