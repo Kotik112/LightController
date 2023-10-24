@@ -45,9 +45,19 @@ colorPicker.addEventListener("change", () => {
   }
 });
 
+/*
+ *       Global variables
+ */
 const wsUrl = `ws://172.16.17.14:9999/qlcplusWS`;
 let ws;
 let isConnected = false;
+
+// Keeps track of the stPatricksDay state
+let stPatricksDayInterval = null;
+
+/**
+ *      Event Listener Declarations
+ */
 
 document.addEventListener("DOMContentLoaded", () => {
   connectToWebsocket();
@@ -88,6 +98,7 @@ powerOffButton.addEventListener("click", () => {
     console.log("Not connected to websocket");
   }
 });
+
 Checkbox1.addEventListener("change", () => {
   // Enable/disable Color Picker 1 based on the checkbox state
   colorPicker1.disabled = !Checkbox1.checked;
@@ -151,10 +162,15 @@ Checkbox6.addEventListener("change", () => {
 
 stPatriksDayButton.addEventListener("click", () => {
   if (isConnected) {
-    stPatricksDay();
+    // If stPatricksDayInterval is 'set', clear and reset it.
+    if (stPatricksDayInterval) {
+      clearInterval(stPatricksDayInterval);
+      stPatricksDayInterval = null; // Reset the ID
+    } else {
+      stPatricksDayInterval = stPatricksDay();
+    }
   } else {
     console.log("not connected");
-    connectToWebsocket();
   }
 });
 
@@ -173,9 +189,12 @@ christmasButton.addEventListener("click", () => {
     );
   } else {
     console.log("Not connected to websocket");
-    connectToWebsocket();
   }
 });
+
+/*
+ *       Helper function Declarations
+ */
 
 const connectToWebsocket = () => {
   ws = new WebSocket(wsUrl);
@@ -235,7 +254,7 @@ function stPatricksDay() {
   const orange = [255, 95, 0]; // Orange
   const green = [0, 255, 0]; // Green
 
-  setInterval(() => sendColorAlternation(orange, green), 1000);
+  return setInterval(() => sendColorAlternation(orange, green), 1000);
 }
 
 // Helper function. Used with setInterval() to switch colors between two fixtures
