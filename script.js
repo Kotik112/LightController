@@ -286,38 +286,49 @@ function sendColorAlternation(color1, color2) {
   }
 }
 
+// Konverterar hex till rgb
+// T.ex #ff0000 -> {r: 255, g: 0, b: 0}
+// Funktionen skippar # i början av hex
 function hex2rgb(hex) {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
 
-  // return {r, g, b}
   return { r, g, b };
 }
 
-function setRed(startChannel = 1, value) {
+function setRed(channel = 1, value) {
   if (value < 0 || value > 255) {
     log.error("Invalid value!");
     return;
   }
-  if (startChannel % 3 === 1) {
+  // Check if channel is valid red channel
+  if (channel % 3 !== 1) {
     log.error("Invalid startChannel.");
   }
-  sendMessage(`CH|${startChannel}|${value}`);
+  sendMessage(`CH|${channel}|${value}`);
 }
 
-function setGreen(startChannel = 2, value) {
+function setGreen(channel = 2, value) {
   if (value < 0 || value > 255) {
     alert("Invalid value!");
     return;
   }
-  sendMessage(`CH|${startChannel + 1}|${value}`);
+  // Check if channel is valid green channel
+  if (channel % 3 !== 2) {
+    log.error("Invalid channel.");
+  }
+  sendMessage(`CH|${channel}|${value}`);
 }
 
-function setBlue(startChannel = 3, value) {
+function setBlue(channel = 3, value) {
   if (value < 0 || value > 255) {
     alert("Invalid value!");
     return;
   }
-  sendMessage(`CH|${startChannel + 2}|${value}`);
+  // Check if channel is valid blue channel
+  if (channel % 3 !== 0) {
+    log.error("Invalid startChannel.");
+  }
+  sendMessage(`CH|${channel}|${value}`);
 }
