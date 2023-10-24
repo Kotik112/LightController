@@ -3,15 +3,11 @@
 This documentation provides information on how to use and understand the JavaScript code for controlling DMX lights using a web interface. The program assumes that the DMX fixtures are set to sequenced channels, meaning each fixture occupies a series of consecutive DMX channels. The JavaScript code interacts with a WebSocket server to control DMX lights.
 
 ## Table of Contents
-[Introduction](#introduction)
-
-[Prerequisites](#prerequisites)
-
-[Usage](#usage)
-
-[Functionality](#functionality)
-
-[HTML Structure](#html-structure)
+[Introduction](#introduction)<br>
+[Prerequisites](#prerequisites)<br>
+[Usage](#usage)<br>
+[Functionality](#functionality)<br>
+[HTML Structure](#html-structure)<br>
 
 ### 1. Introduction<a name="introduction"></a>
 This project provides a web interface for controlling DMX lights. It uses JavaScript and WebSocket communication to send DMX control commands to compatible fixtures. The code allows you to turn the lights on or off, change their colors, and activate various lighting modes.
