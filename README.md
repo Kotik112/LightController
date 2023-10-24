@@ -4,9 +4,13 @@ This documentation provides information on how to use and understand the JavaScr
 
 ## Table of Contents
 [Introduction](#introduction)
+
 [Prerequisites](#prerequisites)
+
 [Usage](#usage)
+
 [Functionality](#functionality)
+
 [HTML Structure](#html-structure)
 
 ### 1. Introduction<a name="introduction"></a>
