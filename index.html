@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Light Controller</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
+</head>
 
-  <body id="page-body">
+<body id="page-body">
     <!-- Power buttons -->
     <div class="controls power-container">
-      <button class="power-button power-on" id="powerOn">On</button>
-      <button class="power-button power-off" id="powerOff">Off</button>
+        <button class="power-button power-on" id="powerOn">On</button>
+        <button class="power-button power-off" id="powerOff">Off</button>
     </div>
 
     <!-- Color picker -->
     <div class="color-picker-container">
-      <label for="colorPicker">Choose a color:</label>
-      <input type="color" id="colorPicker" value="#ff0000" />
+        <label for="colorPicker">Choose a color:</label>
+        <input type="color" id="colorPicker" value="#ff0000" />
     </div>
 
     <!-- Modes -->
     <div class="modes-container">
-      <button>Choose Modes</button>
-      <div class="dropdown-content">
-        <!-- Haloween Mode -->
-        <button class="multi-color-btn halloween-btn" id="halloween-btn">
-          Halloween Mode
-        </button>
-        <!-- St. Patrick's Day Mode -->
-        <button class="multi-color-btn st-patricks-btn" id="st-patricks-btn">
-          St. Patrick's Day Mode
-        </button>
-        <!-- Christmas Mode -->
-        <button class="multi-color-btn christmas-btn" id="christmas-btn">
-          Christmas Mode
-        </button>
-      </div>
+        <button>Choose Modes</button>
+        <div class="dropdown-content">
+            <!-- Haloween Mode -->
+            <button class="multi-color-btn halloween-btn" id="halloween-btn">
+                Halloween Mode
+            </button>
+            <!-- St. Patrick's Day Mode -->
+            <button class="multi-color-btn st-patricks-btn" id="st-patricks-btn">
+                St. Patrick's Day Mode
+            </button>
+            <!-- Christmas Mode -->
+            <button class="multi-color-btn christmas-btn" id="christmas-btn">
+                Christmas Mode
+            </button><br>
+            <button class="multi-color-btn christmas-btn" id="test-play">
+                Play
+            </button>
+            <button class="multi-color-btn christmas-btn" id="test-stop">
+                Stop
+            </button>
+        </div>
     </div>
 
     <!-- Color picker container-->
     <div class="color-picker-container">
-      <label for="colorPicker1">1</label>
-      <input type="checkbox" id="Checkbox1" checked />
-      <input type="color" id="colorPicker1" value="#ff0000" />
-      <label for="colorPicker2">2</label>
-      <input type="checkbox" id="Checkbox2" checked />
-      <input type="color" id="colorPicker2" value="#ff0000" />
-      <label for="colorPicker2">3</label>
-      <input type="checkbox" id="Checkbox3" checked />
-      <input type="color" id="colorPicker3" value="#ff0000" />
-      <label for="colorPicker2">4</label>
-      <input type="checkbox" id="Checkbox4" checked />
-      <input type="color" id="colorPicker4" value="#ff0000" />
-      <label for="colorPicker2">5</label>
-      <input type="checkbox" id="Checkbox5" checked />
-      <input type="color" id="colorPicker5" value="#ff0000" />
-      <label for="colorPicker2">6</label>
-      <input type="checkbox" id="Checkbox6" checked />
-      <input type="color" id="colorPicker6" value="#ff0000" />
+        <label for="colorPicker1">1</label>
+        <input type="checkbox" id="Checkbox1" checked />
+        <input type="color" id="colorPicker1" value="#ff0000" />
+        <label for="colorPicker2">2</label>
+        <input type="checkbox" id="Checkbox2" checked />
+        <input type="color" id="colorPicker2" value="#ff0000" />
+        <label for="colorPicker2">3</label>
+        <input type="checkbox" id="Checkbox3" checked />
+        <input type="color" id="colorPicker3" value="#ff0000" />
+        <label for="colorPicker2">4</label>
+        <input type="checkbox" id="Checkbox4" checked />
+        <input type="color" id="colorPicker4" value="#ff0000" />
+        <label for="colorPicker2">5</label>
+        <input type="checkbox" id="Checkbox5" checked />
+        <input type="color" id="colorPicker5" value="#ff0000" />
+        <label for="colorPicker2">6</label>
+        <input type="checkbox" id="Checkbox6" checked />
+        <input type="color" id="colorPicker6" value="#ff0000" />
     </div>
 
     <!-- Prevas Logo -->
     <div class="logo-container">
-      <img
-        src="https://www.smileincubator.life/wp-content/uploads/2020/04/prevas_logo.png"
-        alt="Prevas Logo"
-      />
+        <img src="https://www.smileincubator.life/wp-content/uploads/2020/04/prevas_logo.png" alt="Prevas Logo" />
     </div>
     <script src="./script.js"></script>
-  </body>
+</body>
+
 </html>

@@ -321,3 +321,22 @@ function changeColor(color) {
     setBlue(channel = 6, colors.b);
 }
 
+const play = document.getElementById("test-play");
+const stop = document.getElementById("test-stop");
+
+play.addEventListener("click", () => {
+    runPatrickAllBlue();
+});
+
+stop.addEventListener("click", () => {
+    stopPatrickAllBlue();
+});
+
+function runPatrickAllBlue() {
+    ws.send(`QLC+API|setFunctionStatus|1|1`);
+}
+
+function stopPatrickAllBlue() {
+    ws.send(`QLC+API|setFunctionStatus|1|0`);
+}
+
