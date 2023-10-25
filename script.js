@@ -19,6 +19,7 @@ const Checkbox5 = document.getElementById("Checkbox5");
 const colorPicker5 = document.getElementById("colorPicker5");
 const Checkbox6 = document.getElementById("Checkbox6");
 const colorPicker6 = document.getElementById("colorPicker6");
+const octoberFestBtn = document.getElementById("october-fest");
 
 /*
  *       Global variables
@@ -28,6 +29,7 @@ let ws;
 let isConnected = false;
 // Keeps track of the stPatricksDay state
 let stPatricksDayInterval = null;
+let christmasInterval = null;
 
 /**
  *      Event Listener Declarations
@@ -37,30 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
     connectToWebsocket();
 });
 
-colorPicker.addEventListener("change", () => {
+/* colorPicker.addEventListener("change", () => {
     const color = colorPicker.value;
     changeColor(color);
-
-    // Update Color Picker 1 if its checkbox is checked
-    if (Checkbox1.checked) {
-        colorPicker1.value = color;
-    }
-    if (Checkbox2.checked) {
-        colorPicker2.value = color;
-    }
-    if (Checkbox3.checked) {
-        colorPicker3.value = color;
-    }
-    if (Checkbox4.checked) {
-        colorPicker4.value = color;
-    }
-    if (Checkbox5.checked) {
-        colorPicker5.value = color;
-    }
-    if (Checkbox6.checked) {
-        colorPicker6.value = color;
-    }
-});
+}); */
 
 powerOnButton.addEventListener("click", (event) => {
     if (isConnected) {
@@ -83,67 +65,6 @@ powerOffButton.addEventListener("click", () => {
         turnOff(1, 7);
     } else {
         console.log("Not connected to websocket");
-    }
-});
-
-Checkbox1.addEventListener("change", () => {
-    // Enable/disable Color Picker 1 based on the checkbox state
-    colorPicker1.disabled = !Checkbox1.checked;
-
-    // Update Color Picker 1 if it's being enabled
-    if (Checkbox1.checked) {
-        colorPicker1.value = colorPicker.value;
-        const color = colorPicker1.value;
-    }
-});
-
-Checkbox2.addEventListener("change", () => {
-    // Enable/disable Color Picker 2 based on the checkbox state
-    colorPicker2.disabled = !Checkbox2.checked;
-
-    // Update Color Picker 2 if it's being enabled
-    if (Checkbox2.checked) {
-        colorPicker2.value = colorPicker.value;
-    }
-});
-
-Checkbox3.addEventListener("change", () => {
-    // Enable/disable Color Picker 2 based on the checkbox state
-    colorPicker3.disabled = !Checkbox3.checked;
-
-    // Update Color Picker 2 if it's being enabled
-    if (Checkbox3.checked) {
-        colorPicker3.value = colorPicker.value;
-    }
-});
-
-Checkbox4.addEventListener("change", () => {
-    // Enable/disable Color Picker 2 based on the checkbox state
-    colorPicker4.disabled = !Checkbox4.checked;
-
-    // Update Color Picker 2 if it's being enabled
-    if (Checkbox4.checked) {
-        colorPicker4.value = colorPicker.value;
-    }
-});
-
-Checkbox5.addEventListener("change", () => {
-    // Enable/disable Color Picker 2 based on the checkbox state
-    colorPicker5.disabled = !Checkbox5.checked;
-
-    // Update Color Picker 2 if it's being enabled
-    if (Checkbox5.checked) {
-        colorPicker5.value = colorPicker.value;
-    }
-});
-
-Checkbox6.addEventListener("change", () => {
-    // Enable/disable Color Picker 2 based on the checkbox state
-    colorPicker6.disabled = !Checkbox6.checked;
-
-    // Update Color Picker 2 if it's being enabled
-    if (Checkbox6.checked) {
-        colorPicker6.value = colorPicker.value;
     }
 });
 
@@ -172,17 +93,14 @@ colorPicker.addEventListener("change", () => {
     setBlue(colors.b);
 });
 
-christmasButton.addEventListener("click", () => {
-    //console.log(ws.readyState);
-    const universeIndex = 1;
-    const dmxStart = 1;
-    const channelCount = 16;
+octoberFestBtn.addEventListener("click", () => {
     if (isConnected) {
-        ws.send(
-            `QLC+API|getChannelsValues|${universeIndex}|${dmxStart}|${channelCount}`
-        );
-    } else {
-        console.log("Not connected to websocket");
+        if (christmasInterval) {
+            clearInterval(christmasInterval);
+            christmasInterval = null;
+        } else {
+            christmasInterval = octoberFest();
+        }
     }
 });
 
@@ -242,15 +160,26 @@ function turnOff(start, end) {
     }
 }
 
+let colorIndex = 0;
 function stPatricksDay() {
     const orange = [255, 95, 0]; // Orange
     const green = [0, 255, 0]; // Green
+    const ALTER_INTERVAL = 2000;
+    colorIndex = 0; // Reset colorIndex
 
-    return setInterval(() => sendColorAlternation(orange, green), 1000);
+    return setInterval(() => sendColorAlternation(orange, green), ALTER_INTERVAL);
+}
+
+function octoberFest() {
+    const blue = [0, 0, 255]; // Blue
+    const white = [255, 255, 255]; // White
+    const ALTER_INTERVAL = 2000;
+    colorIndex = 0; // Reset colorIndex
+
+    return setInterval(() => sendColorAlternation(blue, white), ALTER_INTERVAL);
 }
 
 // Helper function. Used with setInterval() to switch colors between two fixtures
-let colorIndex = 0;
 function sendColorAlternation(color1, color2) {
     const colors = [color1, color2];
     let r, g, b;
@@ -278,11 +207,12 @@ function sendColorAlternation(color1, color2) {
 // T.ex #ff0000 -> {r: 255, g: 0, b: 0}
 // Funktionen skippar # i början av hex
 function hex2rgb(hex) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-
-    return { r, g, b };
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
 }
 
 function setRed(channel = 1, value) {
@@ -290,6 +220,7 @@ function setRed(channel = 1, value) {
         alert("Invalid value!");
         return;
     }
+    console.log(`Setting red to ${value} on channel ${channel}`);
     sendMessage(`CH|${channel}|${value}`);
 }
 
@@ -298,6 +229,7 @@ function setGreen(channel = 2, value) {
         alert("Invalid value!");
         return;
     }
+    console.log(`Setting green to ${value} on channel ${channel}`);
     sendMessage(`CH|${channel}|${value}`);
 }
 
@@ -306,19 +238,23 @@ function setBlue(channel = 3, value) {
         alert("Invalid value!");
         return;
     }
+    console.log(`Setting blue to ${value} on channel ${channel}`);
     sendMessage(`CH|${channel}|${value}`);
 }
 
 function changeColor(color) {
     const colors = hex2rgb(color);
-
-    setRed(colors.r);
-    setGreen(colors.g);
-    setBlue(colors.b);
-
-    setRed(channel = 4, colors.r);
-    setGreen(channel = 5, colors.g);
-    setBlue(channel = 6, colors.b);
+    if (colors === null) {
+        alert("Invalid color!");
+        return;
+    }
+    console.log(`Colors: ${colors}`);
+    for (let i = 1; i < 7; i += 3) {
+        setRed(channel = i, colors.r);
+        setGreen(channel = i + 1, colors.g);
+        setBlue(channel = i + 2, colors.b);
+    }
+    console.log("Color message sent to all 30 channels");
 }
 
 const play = document.getElementById("test-play");
