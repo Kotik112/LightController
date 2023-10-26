@@ -1,49 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Light Controller</title>
     <link rel="stylesheet" href="style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="circle-container">
-        <div class="circle circle-outer">
-            <div class="color-circles">
-                <div class="color-circle" style="background-color: #FF5733;"></div>
-                <div class="color-circle" style="background-color: #FFC300;"></div>
-                <div class="color-circle" style="background-color: #33FF57;"></div>
-                <div class="color-circle" style="background-color: #0099FF;"></div>
-                <div class="color-circle" style="background-color: #3333FF;"></div>
-                <div class="color-circle" style="background-color: #9933FF;"></div>
-                <div class="color-circle" style="background-color: #FF33E9;"></div>
-                <div class="color-circle" style="background-color: #FF336E;"></div>
-            </div>
-            <div class="circle circle-middle">
-                <div class="button-circles">
-                    <a class="button-circle" href="#">
-                        <img class="beer-iconm" src="/assets/rainbow.jpg" alt="rainbow!">
-                    </a>
-                    <div class="button-circle"><img class="beer-iconm" src="/assets/Santa.jpg" alt="santa!"></div>
-                    <div class="button-circle"><img class="beer-iconm" src="/assets/pumpkin.png" alt="pumpkin!"></div>
-                    <div class="button-circle"><img class="beer-iconm" src="/assets/Clover.png" alt="clover!"></div>
-                    <div class="button-circle"><img class="beer-iconm" src="/assets/beer-icon.png" alt="beer!"></div>
-                </div>
-                <!-- <div class="circle circle-inner"> -->
-                <label class="switch" id="toggle-switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-
+      <div class="circle circle-outer">
+        <div class="color-circles">
+          <div
+            class="color-circle"
+            id="orange-circle"
+            style="background-color: #ff5733"
+          ></div>
+          <div
+            class="color-circle"
+            id="yellow-circle"
+            style="background-color: #ffc300"
+          ></div>
+          <div
+            class="color-circle"
+            id="green-circle"
+            style="background-color: #33ff57"
+          ></div>
+          <div
+            class="color-circle"
+            id="light-blue-circle"
+            style="background-color: #0099ff"
+          ></div>
+          <div
+            class="color-circle"
+            id="dark-blue-circle"
+            style="background-color: #3333ff"
+          ></div>
+          <div
+            class="color-circle"
+            id="purple-circle"
+            style="background-color: #9933ff"
+          ></div>
+          <div
+            class="color-circle"
+            id="pink-circle"
+            style="background-color: #ff33e9"
+          ></div>
+          <div
+            class="color-circle"
+            id="red-circle"
+            style="background-color: #ff336e"
+          ></div>
         </div>
+        <div class="circle circle-middle">
+          <div class="button-circles">
+            <a class="button-circle" href="#">
+              <img
+                class="beer-iconm"
+                src="/assets/rainbow.jpg"
+                alt="rainbow!"
+                id="rainbow"
+              />
+            </a>
+            <div class="button-circle">
+              <img class="beer-iconm" src="/assets/Santa.jpg" alt="santa!" />
+            </div>
+            <div class="button-circle">
+              <img
+                class="beer-iconm"
+                src="/assets/pumpkin.png"
+                alt="pumpkin!"
+                id="halloween"
+              />
+            </div>
+            <div class="button-circle">
+              <img
+                class="beer-iconm"
+                src="/assets/Clover.png"
+                alt="clover!"
+                id="st-patricks-day"
+              />
+            </div>
+            <div class="button-circle">
+              <img
+                class="beer-iconm"
+                src="/assets/beer-icon.png"
+                alt="beer!"
+                id="october-fest"
+              />
+            </div>
+          </div>
+          <!-- <div class="circle circle-inner"> -->
+          <label class="switch" id="toggle-switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
     </div>
     <div class="logo-container">
-        <img src="https://www.smileincubator.life/wp-content/uploads/2020/04/prevas_logo.png" alt="Prevas Logo" />
+      <img
+        src="https://www.smileincubator.life/wp-content/uploads/2020/04/prevas_logo.png"
+        alt="Prevas Logo"
+      />
     </div>
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>

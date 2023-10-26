@@ -1,7 +1,26 @@
 /*
  * Element selection
  */
+
+// Buttons for inner circle
 const toggleButton = document.querySelector(".toggle-switch");
+const octoberFestButton = document.getElementById("october-fest");
+const stPatricksDayButton = document.getElementById("st-patricks-day");
+const rainboowButton = document.getElementById("rainbow");
+const christmasButton = document.getElementById("christmas");
+
+// Buttons for outer circle
+const orangeButton = document.getElementById("orange-circle");
+const greenButton = document.getElementById("green-circle");
+const lightBlueButton = document.getElementById("light-blue-circle");
+const darkBlueButton = document.getElementById("dark-blue-circle");
+const purpleButton = document.getElementById("purple-circle");
+const pinkButton = document.getElementById("pink-circle");
+const redButton = document.getElementById("red-circle");
+const yellowButton = document.getElementById("yellow-circle");
+
+// Slider
+const slider = document.getElementById("toggle-switch");
 
 /*
  *       Global variables
@@ -15,46 +34,48 @@ let christmasInterval = null;
 // Keeps track of the color index for stPatricksDay & octoberFest
 let colorIndex = 0;
 
-// When the DOM is loaded, connect to the websocket
-document.addEventListener("DOMContentLoaded", () => {
+// When the DOM/Page is loaded, connect to the websocket
+/* document.addEventListener("DOMContentLoaded", () => {
   connectToWebsocket();
-});
+}); */
 
-toggleButton.addEventListener("change", () => {
-  if (toggleButton.checked) {
+/* slider.addEventListener("change", () => {
+  if (slider.checked) {
     turnOn(1, 31);
   } else {
     turnOff(1, 31);
   }
-});
+}); */
 
-/* function stPatricksDay() {
+function stPatricksDay() {
   let index = 0;
   const orange = [255, 95, 0]; // Orange
   const green = [0, 255, 0]; // Green
 
   return setInterval(() => sendColorAlternation(orange, green), 1000);
-} */
+}
 
+// Helper function. Used with setInterval() to switch colors between two fixtures
 function sendColorAlternation(color1, color2) {
+  const colors = [color1, color2];
   let r, g, b;
   // Lampa 1
-  [r, g, b] = color1;
+  [r, g, b] = colors[colorIndex];
   ws.send(`CH|1|${r}`);
   ws.send(`CH|2|${g}`);
   ws.send(`CH|3|${b}`);
 
-  let secondIndex = index === 1 ? 0 : 1;
+  let secondIndex = colorIndex === 1 ? 0 : 1;
 
   // Lampa 2
-  [r, g, b] = color2;
+  [r, g, b] = colors[secondIndex];
   ws.send(`CH|4|${r}`);
   ws.send(`CH|5|${g}`);
   ws.send(`CH|6|${b}`);
 
-  index++;
-  if (index >= 2) {
-    index = 0;
+  colorIndex++;
+  if (colorIndex >= 2) {
+    colorIndex = 0;
   }
 }
 
@@ -111,16 +132,10 @@ const connectToWebsocket = () => {
   };
 };
 
-// Select all the anchor tags with the "button-button" class
-const buttonButtons = document.querySelectorAll(".button-circle");
+/* Exempel */
+const octoberFestButtonExample = document.getElementById("rainbow");
 
-// Add a click event listener to each anchor tag
-buttonButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    console.log("click");
-    event.preventDefault(); // Prevent the default link behavior
-    // Handle the click action for each button
-    // You can perform actions like sending data to your WebSocket server here
-    // For example, you can identify the button clicked and send a corresponding command.
-  });
+octoberFestButtonExample.addEventListener("click", () => {
+  console.log("Octoberfest button clicked");
+  ws.send("QLC+API|setFunctionStatus|1|1");
 });
