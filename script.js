@@ -185,17 +185,31 @@ function sendColorAlternation(color1, color2) {
     let r, g, b;
     // Lampa 1
     [r, g, b] = colors[colorIndex];
-    ws.send(`CH|1|${r}`);
+    /* ws.send(`CH|1|${r}`);
     ws.send(`CH|2|${g}`);
-    ws.send(`CH|3|${b}`);
+    ws.send(`CH|3|${b}`); */
+
+    // Send to all odd lights
+    for (var i = 1; i < 31; i += 6) {
+        ws.send(`CH|${i}|${r}`);
+        ws.send(`CH|${i + 1}|${g}`);
+        ws.send(`CH|${i + 2}|${b}`);
+    }
 
     let secondIndex = colorIndex === 1 ? 0 : 1;
 
     // Lampa 2
     [r, g, b] = colors[secondIndex];
-    ws.send(`CH|4|${r}`);
+    /* ws.send(`CH|4|${r}`);
     ws.send(`CH|5|${g}`);
-    ws.send(`CH|6|${b}`);
+    ws.send(`CH|6|${b}`); */
+
+    // Send to all even lights
+    for (var i = 4; i < 31; i += 6) {
+        ws.send(`CH|${i}|${r}`);
+        ws.send(`CH|${i + 1}|${g}`);
+        ws.send(`CH|${i + 2}|${b}`);
+    }
 
     colorIndex++;
     if (colorIndex >= 2) {
