@@ -49,3 +49,17 @@ function turnOff(start, end) {
         sendMessage(`CH|${start}|0`);
     }
 }
+
+// Select all the anchor tags with the "button-button" class
+const buttonButtons = document.querySelectorAll('.button-circle');
+
+// Add a click event listener to each anchor tag
+buttonButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        console.log("click")
+        event.preventDefault(); // Prevent the default link behavior
+        // Handle the click action for each button
+        // You can perform actions like sending data to your WebSocket server here
+        // For example, you can identify the button clicked and send a corresponding command.
+    });
+});

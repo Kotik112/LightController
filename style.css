@@ -202,7 +202,7 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #DC3545;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -216,6 +216,6 @@ body {
 }
 
 img {
-    height: 120%;
+    height: 150%;
     width: auto;
 }
