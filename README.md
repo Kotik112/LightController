@@ -38,8 +38,7 @@ Clicking the "On" button (powerOnButton) turns on the lights.
 Clicking the "Off" button (powerOffButton) turns off the lights.
 
 Color Selection
-The color of the lights can be changed using the color picker (colorPicker).
-If checkboxes (Checkbox1 to Checkbox6) are checked, the color pickers (colorPicker1 to colorPicker6) change to the selected color when the main color picker changes.
+WIP
 
 Modes
 "St. Patrick's Day" mode can be activated by clicking the "St. Patrick's Day" button (stPatriksDayButton).
