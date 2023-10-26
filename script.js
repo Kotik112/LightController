@@ -23,17 +23,28 @@ const octoberFestBtn = document.getElementById("october-fest");
 
 /*
  *       Global variables
- */
-const wsUrl = `ws://172.16.17.14:9999/qlcplusWS`;
+ */ 
+const wsUrl = `ws://127.0.0.1:9999/qlcplusWS`;
 let ws;
 let isConnected = false;
 // Keeps track of the stPatricksDay state
 let stPatricksDayInterval = null;
 let christmasInterval = null;
+let isGreen = false;
 
 /**
  *      Event Listener Declarations
  */
+/** 
+ *      Event Listener for New Color Circle
+ */
+document.querySelectorAll('.color-circle').forEach(circle => {
+    circle.addEventListener('click', function() {
+        const color = this.getAttribute('data-color');
+        changeColorByCircle(color);
+    });
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
     connectToWebsocket();
@@ -82,16 +93,7 @@ stPatriksDayButton.addEventListener("click", () => {
     }
 });
 
-colorPicker.addEventListener("change", () => {
-    const selectedColor = colorPicker.value;
-    const colors = hex2rgb(selectedColor);
-    console.log(colors);  // remove later
-    // Change default channel if needed by calling:
-    // setRed(startChannel = N, colors.r);
-    setRed(colors.r);
-    setGreen(colors.g);
-    setBlue(colors.b);
-});
+
 
 octoberFestBtn.addEventListener("click", () => {
     if (isConnected) {
@@ -274,5 +276,45 @@ function runPatrickAllBlue() {
 
 function stopPatrickAllBlue() {
     ws.send(`QLC+API|setFunctionStatus|1|0`);
+}
+/**
+ * New Function For The Channels For Color Circle
+ */
+function changeColorByCircle(color) {
+    const colors = hex2rgb(color);
+    if (colors === null) {
+        alert("The color does not exist");
+        return;
+    }
+    console.log(`Colors: ${colors}`);
+    for (let i = 1; i < 7; i += 3) {
+        setRed(channel = i, colors.r);
+        setGreen(channel = i + 1, colors.g);
+        setBlue(channel = i + 2, colors.b);
+    }
+    console.log("Colors sent to channels");
+}
+
+const greenCircle = document.getElementById("green-circle");
+
+greenCircle.addEventListener("click", function() {
+    if(isGreen){
+        turnOfAllGreen();
+        isGreen = false;
+    }else{
+        turnAllGreen();
+        isGreen = true;
+    }
+
+})
+
+
+function turnAllGreen() {
+    // här ändrar vi till grön
+    ws.send(`QLC+API|setFunctionStatus|1|1`);
+    console.log("Set it green bro");
+}
+function turnOfAllGreen(){
+    ws.send(`QLC+API|setFunctionStatus|1|0`)
 }
 
