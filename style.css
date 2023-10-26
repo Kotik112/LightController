@@ -1,113 +1,221 @@
-#colorPicker {
-    width: 50px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-  .black-background .color-picker-container label {
-color: white; /* Label text color when the background is black (white) */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-  .power-button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
+.circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circle-outer {
+    width: 300px;
+    height: 300px;
+    border: 5px solid #007BFF;
+    border-radius: 50%;
+}
+
+.circle-middle {
+    width: 180px;
+    height: 180px;
+    border: 5px solid #28A745;
+    border-radius: 50%;
+}
+
+.color-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-circles .color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.color-circles .color-circle:nth-child(1) {
+    transform: translateX(150px);
+}
+
+.color-circles .color-circle:nth-child(2) {
+    transform: rotate(45deg) translateX(150px);
+}
+
+.color-circles .color-circle:nth-child(3) {
+    transform: rotate(90deg) translateX(150px);
+}
+
+.color-circles .color-circle:nth-child(4) {
+    transform: rotate(135deg) translateX(150px);
+}
+
+.color-circles .color-circle:nth-child(5) {
+    transform: rotate(180deg) translateX(150px);
+}
+
+.color-circles .color-circle:nth-child(6) {
+    transform: rotate(225deg) translateX(150px);
+}
+
+.color-circles .color-circle:nth-child(7) {
+    transform: rotate(270deg) translateX(150px);
+}
+
+.color-circles .color-circle:nth-child(8) {
+    transform: rotate(315deg) translateX(150px);
+}
+
+.button-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-72deg);
+    /* Counter-rotate the button-circles */
+}
+
+.button-circles .button-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #DC3545;
+    position: absolute;
+}
+
+/* Distribute button-circles evenly around the middle circle */
+.button-circles .button-circle:nth-child(1) {
+    transform: rotate(72deg) translateX(90px);
+}
+
+.button-circles .button-circle:nth-child(2) {
+    transform: rotate(144deg) translateX(90px);
+}
+
+.button-circles .button-circle:nth-child(3) {
+    transform: rotate(216deg) translateX(90px);
+}
+
+.button-circles .button-circle:nth-child(4) {
+    transform: rotate(288deg) translateX(90px);
+}
+
+.button-circles .button-circle:nth-child(5) {
+    transform: rotate(0deg) translateX(90px);
+}
+
+.circle-inner {
+    width: 100px;
+    height: 100px;
+    border: 5px solid #FFC107;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
     cursor: pointer;
-  }
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+}
 
-  .power-on {
-    background-color: #4caf50;
-    color: white;
-  }
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+}
 
-  .power-off {
-    background-color: #f44336;
-    color: white;
-  }
+.switch input:checked+.slider {
+    background-color: #28A745;
+}
 
-  .multi-color-btn {
-    background: linear-gradient(
-      to right,
-      orange 0%,
-      black 50%,
-      orange 100%
-    ); /* Default to Halloween colors */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
+.switch input:focus+.slider {
+    box-shadow: 0 0 1px #28A745;
+}
 
-  .st-patricks-btn {
-    background: linear-gradient(to right, green 0%, white 50%, orange 100%);
-  }
+.switch input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
 
-  .christmas-btn {
-    background: linear-gradient(to right, red 0%, white 50%, red 100%);
-  }
-  .color-picker-container{
-    background-color: darkgray;
-    background: center;/* Display as an inline block to wrap around the buttons */
-    padding: 10px; /* Add padding to create space around the buttons */
-    border-radius: 10px; /* Add rounded corners for a more visually appealing container */
-    margin: 10px; /* Add margin for spacing between containers */
-    text-align: center;
-  }
+.logo-container img {
+    width: 150px;
+    height: auto;
+}
 
-  .modes-container {
-    text-align: center;
-    margin: 10px 0;
-  }
-
-  .logo-container {
+.logo-container {
     text-align: center;
     position: fixed;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-   
-  }
-
-  .logo-container img {
-width: 150px; /* Adjust the width to your desired size */
-height: auto; /* To maintain the aspect ratio */
 }
 
-  .power-button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    background-color: #4caf50;
-    color: white;
-  }
-  .st-patricks-btn {
-    background: linear-gradient(to right, green, orange);
-    color: white;
-  }
-
-  .christmas-btn {
-    background: red;
-    color: white;
-  }
-
-  .power-container {
+.button-circles .button-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #DC3545;
     display: flex;
     justify-content: center;
-    gap: 10px;
-  }
-  @keyframes pulse {
-0% {
-background-color: #4caf50;
+    align-items: center;
+    font-size: 16px;
+    color: white;
 }
-50% {
-background-color: #7FFF00; /* Change to a lighter green or any color you prefer */
+
+/* Rotate the nested div in the opposite direction to counter the button-circle's rotation */
+.button-circles .button-circle>div {
+    transform: rotate(-90deg);
 }
-100% {
-background-color: #4caf50;
-}
+
+img {
+    height: 120%;
+    width: auto;
 }
