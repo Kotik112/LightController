@@ -257,6 +257,11 @@ function changeColor(color) {
     console.log("Color message sent to all 30 channels");
 }
 
+
+
+
+//// Experiment
+
 const play = document.getElementById("test-play");
 const stop = document.getElementById("test-stop");
 
@@ -275,4 +280,3 @@ function runPatrickAllBlue() {
 function stopPatrickAllBlue() {
     ws.send(`QLC+API|setFunctionStatus|1|0`);
 }
-
