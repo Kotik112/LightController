@@ -7,6 +7,7 @@ const octoberFestButton = document.getElementById("october-fest");
 const stPatricksDayButton = document.getElementById("st-patricks-day");
 const rainbowButton = document.getElementById("rainbow");
 const christmasButton = document.getElementById("christmas");
+const halloweenButton = document.getElementById("christmas");
 
 // Buttons for outer circle
 const orangeButton = document.getElementById("orange-circle");
@@ -21,10 +22,28 @@ const yellowButton = document.getElementById("yellow-circle");
 // Slider
 const slider = document.getElementById("toggle-switch");
 
+let masterSwitch = true;
+
+if (!masterSwitch){
+  let isOctoberFestOn = false;
+  let isStPatricksDayOn = false;
+  let isChristmasOn = false;
+  let isHalloweenOn = false;
+  let isRainbowOn = false;
+  let isGreenOn = false;
+  let isLightBlueOn = false;
+  let isDarkBlueOn = false;
+  let isOrangeOn = false;
+  let isYellowOn = false;
+  let isPurpleOn = false;
+  let isPinkOn = false;
+  let isRedOn = false;
+}
+
 /*
  *       Global variables
  */
-const wsUrl = `ws://172.16.17.14:9999/qlcplusWS`;
+const wsUrl = `ws://127.0.0.1:9999/qlcplusWS`;
 let ws;
 let isConnected = false;
 // Keeps track of the stPatricksDay state
@@ -60,15 +79,37 @@ octoberFestButton.addEventListener("click", () => {
 });
 
 let isStPatricksDayOn = false;
-stPatricksDayButton.addEventListener("click", () => {});
+stPatricksDayButton.addEventListener("click", () => {
+    if (!isStPatricksDayOn) {
+      console.log("hej");
+      playFunction(12);
+      isStPatricksDayOn = true;
+    } else {
+      stopFunction(12);
+      isStPatricksDayOn = false;
+    }
+});
+
+let isHalloweenOn = false;
+halloweenButton.addEventListener("click", () => {
+    if (!isHalloweenOn) {
+      console.log("hej");
+      playFunction(12);
+      isHalloweenOn = true;
+    } else {
+      stopFunction(12);
+      isHalloweenOn = false;
+    }
+});
 
 let isRainbowOn = false;
 rainbowButton.addEventListener("click", () => {
   if (!isRainbowOn) {
+    console.log("hej");
     playFunction(12);
     isRainbowOn = true;
   } else {
-    playFunction(12);
+    stopFunction(12);
     isRainbowOn = false;
   }
 });
@@ -79,7 +120,7 @@ christmasButton.addEventListener("click", () => {
     playFunction(11);
     isChristmasOn = true;
   } else {
-    playFunction(11);
+    stopFunction(11);
     isChristmasOn = false;
   }
 });
@@ -87,10 +128,12 @@ christmasButton.addEventListener("click", () => {
 let isOrangeOn = false;
 orangeButton.addEventListener("click", () => {
   if (!isOrangeOn) {
+    playFunction(72);
     // Orange button ÓN logic here
     console.log("Orange button ON");
     isOrangeOn = true;
   } else {
+    stopFunction(72);
     // Orange button OFF logic here
     console.log("Orange button OFF");
     isOrangeOn = false;
@@ -100,10 +143,12 @@ orangeButton.addEventListener("click", () => {
 let isGreenOn = false;
 greenButton.addEventListener("click", () => {
   if (!isGreenOn) {
+    playFunction(75);
     // Green button ÓN logic here
     console.log("Green button ON");
     isGreenOn = true;
   } else {
+    stopFunction(75);
     // Green button OFF logic here
     console.log("Green button OFF");
     isGreenOn = false;
@@ -113,10 +158,13 @@ greenButton.addEventListener("click", () => {
 let isLightBlueOn = false;
 lightBlueButton.addEventListener("click", () => {
   if (!isLightBlueOn) {
-    // Light blue button ÓN logic here
     console.log("Light blue button ON");
+    playFunction(76);
+    // Light blue button ÓN logic here
+    
     isLightBlueOn = true;
   } else {
+    stopFunction(76);
     // Light blue button OFF logic here
     console.log("Light blue button OFF");
     isLightBlueOn = false;
@@ -126,10 +174,12 @@ lightBlueButton.addEventListener("click", () => {
 let isDarkBlueOn = false;
 darkBlueButton.addEventListener("click", () => {
   if (!isDarkBlueOn) {
+    playFunction(77);
     // Dark blue button ÓN logic here
     console.log("Dark blue button ON");
     isDarkBlueOn = true;
   } else {
+    stopFunction(77);
     // Dark blue button OFF logic here
     console.log("Dark blue button OFF");
     isDarkBlueOn = false;
@@ -139,10 +189,12 @@ darkBlueButton.addEventListener("click", () => {
 let isPurpleOn = false;
 purpleButton.addEventListener("click", () => {
   if (!isPurpleOn) {
+    playFunction(79);
     // Purple button ÓN logic here
     console.log("Purple button ON");
     isPurpleOn = true;
   } else {
+    stopFunction(79);
     // Purple button OFF logic here
     console.log("Purple button OFF");
     isPurpleOn = false;
@@ -152,10 +204,12 @@ purpleButton.addEventListener("click", () => {
 let isPinkOn = false;
 pinkButton.addEventListener("click", () => {
   if (!isPinkOn) {
+    playFunction(78);
     // Pink button ÓN logic here
     console.log("Pink button ON");
     isPinkOn = true;
   } else {
+    stopFunction(78);
     // Pink button OFF logic here
     console.log("Pink button OFF");
     isPinkOn = false;
@@ -165,10 +219,12 @@ pinkButton.addEventListener("click", () => {
 let isRedOn = false;
 redButton.addEventListener("click", () => {
   if (!isRedOn) {
+    playFunction(71);
     // Red button ÓN logic here
     console.log("Red button ON");
     isRedOn = true;
   } else {
+    stopFunction(71);
     // Red button OFF logic here
     console.log("Red button OFF");
     isRedOn = false;
@@ -178,10 +234,12 @@ redButton.addEventListener("click", () => {
 let isYellowOn = false;
 yellowButton.addEventListener("click", () => {
   if (!isYellowOn) {
+    playFunction(73);
     // Yellow button ÓN logic here
     console.log("Yellow button ON");
     isYellowOn = true;
   } else {
+    stopFunction(73);
     // Yellow button OFF logic here
     console.log("Yellow button OFF");
     isYellowOn = false;
@@ -280,19 +338,3 @@ const connectToWebsocket = () => {
   };
 };
 
-/* Exempel */
-const octoberFestButtonExample = document.getElementById("rainbow");
-
-let isOctoberFeztOn = false;
-octoberFestButtonExample.addEventListener("click", () => {
-  console.log("Octoberfest button clicked");
-  // if (isOctoberFestOn is false, play octoberfest
-  if (!isOctoberFeztOn) {
-    playFunction(10);
-    // set boolean to true so that next time the button is clicked, it will turn off the function
-    isOctoberFeztOn = true;
-  } else {
-    stopFunction(10);
-    isOctoberFeztOn = false;
-  }
-});
