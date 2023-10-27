@@ -3,7 +3,6 @@
  */
 
 // Buttons for inner circle
-const toggleButton = document.querySelector(".toggle-switch");
 const octoberFestButton = document.getElementById("october-fest");
 const stPatricksDayButton = document.getElementById("st-patricks-day");
 const rainboowButton = document.getElementById("rainbow");
@@ -47,8 +46,149 @@ let colorIndex = 0;
   }
 }); */
 
+let isOctoberFestOn = false;
+octoberFestButton.addEventLitener("click", () => {
+  // if (isOctoberFestOn is false, play octoberfest
+  if (!isOctoberFestOn) {
+    playFunction(10);
+    // set boolean to true so that next time the button is clicked, it will turn off the function
+    isOctoberFestOn = true;
+  } else {
+    stopFunction(10);
+    isOctoberFestOn = false;
+  }
+});
+
+let isStPatricksDayOn = false;
+stPatricksDayButton.addEventListener("click", () => {});
+
+let isRainbowOn = false;
+rainbowButton.addEventListener("click", () => {
+  if (!isRainbowOn) {
+    playFunction(12);
+    isRainbowOn = true;
+  } else {
+    playFunction(12);
+    isRainbowOn = false;
+  }
+});
+
+let isChristmasOn = false;
+christmasButton.addEventListener("click", () => {
+  if (!isChristmasOn) {
+    playFunction(11);
+    isChristmasOn = true;
+  } else {
+    playFunction(11);
+    isChristmasOn = false;
+  }
+});
+
+let isOrangeOn = false;
+orangeButton.addEventListener("click", () => {
+  if (!isOrangeOn) {
+    // Orange button ÓN logic here
+    console.log("Orange button ON");
+    isOrangeOn = true;
+  } else {
+    // Orange button OFF logic here
+    console.log("Orange button OFF");
+    isOrangeOn = false;
+  }
+});
+
+let isGreenOn = false;
+greenButton.addEventListener("click", () => {
+  if (!isGreenOn) {
+    // Green button ÓN logic here
+    console.log("Green button ON");
+    isGreenOn = true;
+  } else {
+    // Green button OFF logic here
+    console.log("Green button OFF");
+    isGreenOn = false;
+  }
+});
+
+let isLightBlueOn = false;
+lightBlueButton.addEventListener("click", () => {
+  if (!isLightBlueOn) {
+    // Light blue button ÓN logic here
+    console.log("Light blue button ON");
+    isLightBlueOn = true;
+  } else {
+    // Light blue button OFF logic here
+    console.log("Light blue button OFF");
+    isLightBlueOn = false;
+  }
+});
+
+let isDarkBlueOn = false;
+darkBlueButton.addEventListener("click", () => {
+  if (!isDarkBlueOn) {
+    // Dark blue button ÓN logic here
+    console.log("Dark blue button ON");
+    isDarkBlueOn = true;
+  } else {
+    // Dark blue button OFF logic here
+    console.log("Dark blue button OFF");
+    isDarkBlueOn = false;
+  }
+});
+
+let isPurpleOn = false;
+purpleButton.addEventListener("click", () => {
+  if (!isPurpleOn) {
+    // Purple button ÓN logic here
+    console.log("Purple button ON");
+    isPurpleOn = true;
+  } else {
+    // Purple button OFF logic here
+    console.log("Purple button OFF");
+    isPurpleOn = false;
+  }
+});
+
+let isPinkOn = false;
+pinkButton.addEventListener("click", () => {
+  if (!isPinkOn) {
+    // Pink button ÓN logic here
+    console.log("Pink button ON");
+    isPinkOn = true;
+  } else {
+    // Pink button OFF logic here
+    console.log("Pink button OFF");
+    isPinkOn = false;
+  }
+});
+
+let isRedOn = false;
+redButton.addEventListener("click", () => {
+  if (!isRedOn) {
+    // Red button ÓN logic here
+    console.log("Red button ON");
+    isRedOn = true;
+  } else {
+    // Red button OFF logic here
+    console.log("Red button OFF");
+    isRedOn = false;
+  }
+});
+
+let isYellowOn = false;
+yellowButton.addEventListener("click", () => {
+  if (!isYellowOn) {
+    // Yellow button ÓN logic here
+    console.log("Yellow button ON");
+    isYellowOn = true;
+  } else {
+    // Yellow button OFF logic here
+    console.log("Yellow button OFF");
+    isYellowOn = false;
+  }
+});
+
 function stPatricksDay() {
-  let index = 0;
   const orange = [255, 95, 0]; // Orange
   const green = [0, 255, 0]; // Green
 
@@ -108,6 +248,14 @@ function sendMessage(message) {
   }
 }
 
+function playFunction(functionNumber) {
+  ws.send(`QLC+API|setFunctionStatus|${functionNumber}|1`);
+}
+
+function stopFunction(functionNumber) {
+  ws.send(`QLC+API|setFunctionStatus|${functionNumber}|0`);
+}
+
 const connectToWebsocket = () => {
   ws = new WebSocket(wsUrl);
 
@@ -135,7 +283,16 @@ const connectToWebsocket = () => {
 /* Exempel */
 const octoberFestButtonExample = document.getElementById("rainbow");
 
+let isOctoberFeztOn = false;
 octoberFestButtonExample.addEventListener("click", () => {
   console.log("Octoberfest button clicked");
-  ws.send("QLC+API|setFunctionStatus|1|1");
+  // if (isOctoberFestOn is false, play octoberfest
+  if (!isOctoberFeztOn) {
+    playFunction(10);
+    // set boolean to true so that next time the button is clicked, it will turn off the function
+    isOctoberFeztOn = true;
+  } else {
+    stopFunction(10);
+    isOctoberFeztOn = false;
+  }
 });
