@@ -5,7 +5,7 @@
 // Buttons for inner circle
 const octoberFestButton = document.getElementById("october-fest");
 const stPatricksDayButton = document.getElementById("st-patricks-day");
-const rainboowButton = document.getElementById("rainbow");
+const rainbowButton = document.getElementById("rainbow");
 const christmasButton = document.getElementById("christmas");
 
 // Buttons for outer circle
@@ -47,7 +47,7 @@ let colorIndex = 0;
 }); */
 
 let isOctoberFestOn = false;
-octoberFestButton.addEventLitener("click", () => {
+octoberFestButton.addEventListener("click", () => {
   // if (isOctoberFestOn is false, play octoberfest
   if (!isOctoberFestOn) {
     playFunction(10);
